@@ -40,16 +40,16 @@ function asSet<T>(a: Iterable<T>): Set<T> {
   return a instanceof Set ? a : new Set(a);
 }
 
-export function chunks<S extends unknown[] | string>(sequence: S, size: number): S[] {
+export function chunks<S extends readonly unknown[] | string>(sequence: S, size: number): S[] {
   const length = Math.ceil(sequence.length / size);
   return Array.from({ length }, (_, i) => sequence.slice(i * size, (i + 1) * size) as S);
 }
 
-export function single<T>(a: T[]): T {
-  if (a.length !== 1) {
+export function single<T>(array: readonly T[]): T {
+  if (array.length !== 1) {
     throw new Error('Not a single item');
   }
-  return a[0];
+  return array[0];
 }
 
 export function equal<T>(a: T, b: T): T {
@@ -57,4 +57,38 @@ export function equal<T>(a: T, b: T): T {
     throw new Error(`${a} does not equal ${b}`);
   }
   return a;
+}
+
+export function getInts(str: string | undefined): number[] {
+  return str?.match(/\d+/g)?.map(asInteger) ?? [];
+}
+
+export function isDefined<T>(value: T): value is NonNullable<T> {
+  return value != null;
+}
+
+export function isNotEmpty(str: string | undefined | null): str is string {
+  return str != null && str.trim() !== '';
+}
+
+export function toRecord<T, K extends string | number | symbol, V>(
+  array: readonly T[],
+  key: (item: T, index: number) => K,
+  value: (item: T, index: number) => V,
+) {
+  const result = {} as Record<K, V>;
+  for (const [i, item] of array.entries()) {
+    const k = key(item, i);
+    if (Object.hasOwn(result, k)) {
+      throw new Error('Duplicate key: ' + String(k));
+    }
+    result[k] = value(item, i);
+  }
+  return result;
+}
+
+export function assert(condition: unknown, message?: string) {
+  if (!condition) {
+    throw new Error(message ?? 'Assertion failed');
+  }
 }
