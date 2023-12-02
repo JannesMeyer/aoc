@@ -92,3 +92,11 @@ export function assert(condition: unknown, message?: string) {
     throw new Error(message ?? 'Assertion failed');
   }
 }
+
+/** Like Python's range() generator */
+export function* range(start: number, stop: number, step = stop < start ? -1 : 1) {
+  while ((step < 0 && stop < start) || (step > 0 && stop > start)) {
+    yield start;
+    start += step;
+  }
+}
