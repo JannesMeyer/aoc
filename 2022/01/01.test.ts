@@ -1,5 +1,5 @@
 import { expect, test } from 'bun:test';
-import { asInteger, doubleLineBreak, lineBreak, read, sum } from '../utils';
+import { asInteger, doubleLineBreak, lineBreak, read, sum } from '../../utils';
 
 const input = await read('input.txt', import.meta);
 const elves = input.split(doubleLineBreak).map((g) => g.split(lineBreak).map(asInteger).reduce(sum));

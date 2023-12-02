@@ -1,5 +1,5 @@
 import { expect, test } from 'bun:test';
-import { read } from '../utils';
+import { read } from '../../utils';
 
 const input = await read('input.txt', import.meta);
 

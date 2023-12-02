@@ -52,8 +52,8 @@ export function single<T>(array: readonly T[]): T {
   return array[0];
 }
 
-export function getInts(str: string | undefined): number[] {
-  return str?.match(/\d+/g)?.map(asInteger) ?? [];
+export function parseInts(str: string): number[] {
+  return str.match(/\d+/g).map(asInteger);
 }
 
 export function isDefined<T>(value: T): value is NonNullable<T> {

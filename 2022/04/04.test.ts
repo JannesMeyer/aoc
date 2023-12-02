@@ -1,5 +1,5 @@
 import { expect, test } from 'bun:test';
-import { asInteger, readLines } from '../utils';
+import { asInteger, readLines } from '../../utils';
 
 type Range = [number, number];
 

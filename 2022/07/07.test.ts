@@ -1,5 +1,5 @@
 import { expect, test } from 'bun:test';
-import { getInts, readLines, sum } from '../utils';
+import { parseInts, readLines, sum } from '../../utils';
 
 const input = await readLines('input.txt', import.meta);
 
@@ -31,7 +31,7 @@ function collectSizes(lines: string[]) {
     if (line.startsWith('$ ls')) {
       continue;
     }
-    const size = getInts(line)[0];
+    const size = parseInts(line)[0];
     if (size == null) {
       continue;
     }

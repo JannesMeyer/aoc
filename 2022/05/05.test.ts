@@ -1,8 +1,8 @@
 import { expect, test } from 'bun:test';
-import { assert, doubleLineBreak, getInts, isNotEmpty, lineBreak, read, toRecord } from '../utils';
+import { assert, doubleLineBreak, isNotEmpty, lineBreak, parseInts, read, toRecord } from '../../utils';
 
 const input = (await read('input.txt', import.meta)).split(doubleLineBreak);
-const moves = input[1].split(lineBreak).map(getInts);
+const moves = input[1].split(lineBreak).map(parseInts);
 
 test('5.1', () => {
   const stacks = getStacks(input[0]);
@@ -26,7 +26,7 @@ test('5.2', () => {
 
 function getStacks(text: string) {
   const lines = text.split(lineBreak).reverse();
-  return toRecord(getInts(lines.shift()), (k) => k, (_, i) => lines.map((r) => r[i * 4 + 1]).filter(isNotEmpty));
+  return toRecord(parseInts(lines.shift()), (k) => k, (_, i) => lines.map((r) => r[i * 4 + 1]).filter(isNotEmpty));
 }
 
 function top(stacks: ReturnType<typeof getStacks>): string {

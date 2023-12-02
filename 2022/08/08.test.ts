@@ -1,4 +1,4 @@
-import { asInteger, readLines, throwError } from '../utils';
+import { asInteger, readLines, throwError } from '../../utils';
 import { expect, test } from 'bun:test';
 
 type Trees = number[][];

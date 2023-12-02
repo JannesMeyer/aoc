@@ -1,5 +1,5 @@
 import { expect, test } from 'bun:test';
-import { chunks, intersection, readLines, single, sum, throwError } from '../utils';
+import { chunks, intersection, readLines, single, sum, throwError } from '../../utils';
 
 const lines = await readLines('input.txt', import.meta);
 
