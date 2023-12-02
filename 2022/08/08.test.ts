@@ -1,18 +1,19 @@
-import { asInteger, equal, readLines, throwError } from '../utils.ts';
+import { asInteger, readLines, throwError } from '../utils';
+import { expect, test } from 'bun:test';
 
 type Trees = number[][];
 
-const input = await readLines('input.txt', import.meta.url);
+const input = await readLines('input.txt', import.meta);
 const load = (input: string[]): Trees => input.map((str) => Array.from(str, asInteger));
 
-Deno.test('8.1', () => {
-  equal(countVisibleTrees(load(['30373', '25512', '65332', '33549', '35390'])), 21);
-  equal(countVisibleTrees(load(input)), 1816);
+test('8.1', () => {
+  expect(countVisibleTrees(load(['30373', '25512', '65332', '33549', '35390']))).toEqual(21);
+  expect(countVisibleTrees(load(input))).toEqual(1816);
 });
 
-Deno.test('8.2', () => {
-  equal(getMaxScenicScore(load(['30373', '25512', '65332', '33549', '35390'])), 8);
-  equal(getMaxScenicScore(load(input)), 383520);
+test('8.2', () => {
+  expect(getMaxScenicScore(load(['30373', '25512', '65332', '33549', '35390']))).toEqual(8);
+  expect(getMaxScenicScore(load(input))).toEqual(383520);
 });
 
 function countVisibleTrees(map: Trees) {
@@ -58,7 +59,7 @@ function getScenicScore(trees: Trees, x: number, y: number) {
 
 function getViewDistance(map: Trees, x: number, y: number, dx: number, dy: number): number {
   const trees = walk(map, x, y, dx, dy);
-  const start = trees.next().value ?? throwError();
+  const start = trees.next().value;
   let distance = 0;
   for (const value of trees) {
     distance++;
@@ -67,7 +68,7 @@ function getViewDistance(map: Trees, x: number, y: number, dx: number, dy: numbe
   return distance;
 }
 
-function* walk<T>(map: T[][], x: number, y: number, dx: number, dy: number) {
+function* walk<T>(map: T[][], x: number, y: number, dx: number, dy: number): Generator<T> {
   while (true) {
     const p = map[y]?.[x];
     if (p == null) return;

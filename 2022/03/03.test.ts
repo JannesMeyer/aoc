@@ -1,14 +1,15 @@
-import { chunks, equal, intersection, readLines, single, sum, throwError } from '../utils.ts';
+import { expect, test } from 'bun:test';
+import { chunks, intersection, readLines, single, sum, throwError } from '../utils';
 
-const lines = await readLines('input.txt', import.meta.url);
+const lines = await readLines('input.txt', import.meta);
 
-Deno.test('3.1', () => {
+test('3.1', () => {
   const priorities = lines.map((line) => getPriority(single(intersection(...chunks(line, Math.floor(line.length / 2))))));
-  equal(priorities.reduce(sum), 7597);
+  expect(priorities.reduce(sum)).toEqual(7597);
 });
 
-Deno.test('3.2', () => {
-  equal(chunks(lines, 3).map((g) => getPriority(single(intersection(...g)))).reduce(sum), 2607);
+test('3.2', () => {
+  expect(chunks(lines, 3).map((g) => getPriority(single(intersection(...g)))).reduce(sum)).toEqual(2607);
 });
 
 const a = 'a'.codePointAt(0) ?? throwError();

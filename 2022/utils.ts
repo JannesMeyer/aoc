@@ -1,12 +1,12 @@
 export const lineBreak = /\r?\n/;
 export const doubleLineBreak = /\r?\n\r?\n/;
 
-export function read(path: string, baseUrl?: string) {
-  return Deno.readTextFile(baseUrl ? new URL(path, baseUrl) : path);
+export function read(path: string, meta: ImportMeta) {
+  return Bun.file(new URL(path, meta.url)).text();
 }
 
-export async function readLines(path: string, baseUrl?: string) {
-  return (await read(path, baseUrl)).split(lineBreak);
+export async function readLines(path: string, meta: ImportMeta) {
+  return (await read(path, meta)).split(lineBreak);
 }
 
 export function asInteger(a: string | number) {
@@ -50,13 +50,6 @@ export function single<T>(array: readonly T[]): T {
     throw new Error('Not a single item');
   }
   return array[0];
-}
-
-export function equal<T>(a: T, b: T): T {
-  if (a !== b) {
-    throw new Error(`${a} does not equal ${b}`);
-  }
-  return a;
 }
 
 export function getInts(str: string | undefined): number[] {

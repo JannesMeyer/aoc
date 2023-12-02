@@ -1,23 +1,24 @@
-import { equal, readLines, sum } from '../utils.ts';
+import { expect, test } from 'bun:test';
+import { readLines, sum } from '../utils';
 
-const lines = await readLines('input.txt', import.meta.url);
+const lines = await readLines('input.txt', import.meta);
 
-Deno.test('2.1', () => {
+test('2.1', () => {
   const scores = lines.map((line) => line.split(' ')).map(([a, b]) => {
     const opp = moveByInput[a];
     const you = moveByInput[b];
     return you + 1 + getScore(opp, you);
   });
-  equal(scores.reduce(sum), 10595);
+  expect(scores.reduce(sum)).toEqual(10595);
 });
 
-Deno.test('2.2', () => {
+test('2.2', () => {
   const scores = lines.map((line) => line.split(' ')).map(([a, b]) => {
     const opp = moveByInput[a];
     const you = (moves.length + opp + deltaByInput[b]) % moves.length;
     return you + 1 + getScore(opp, you);
   });
-  equal(scores.reduce(sum), 9541);
+  expect(scores.reduce(sum)).toEqual(9541);
 });
 
 const moves = ['rock', 'paper', 'scissors'];

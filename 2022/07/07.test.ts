@@ -1,15 +1,16 @@
-import { equal, getInts, readLines, sum } from '../utils.ts';
+import { expect, test } from 'bun:test';
+import { getInts, readLines, sum } from '../utils';
 
-const input = await readLines('input.txt', import.meta.url);
+const input = await readLines('input.txt', import.meta);
 
-Deno.test('7.1', () => {
-  equal(Array.from(Object.values(collectSizes(input))).filter((x) => x <= 100000).reduce(sum), 1477771);
+test('7.1', () => {
+  expect(Array.from(Object.values(collectSizes(input))).filter((x) => x <= 100000).reduce(sum)).toEqual(1477771);
 });
 
-Deno.test('7.2', () => {
+test('7.2', () => {
   const sizes = collectSizes(input);
   const toDelete = 30000000 - (70000000 - sizes['/']);
-  equal(Math.min(...Array.from(Object.values(sizes)).filter((x) => x >= toDelete)), 3579501);
+  expect(Math.min(...Array.from(Object.values(sizes)).filter((x) => x >= toDelete))).toEqual(3579501);
 });
 
 function collectSizes(lines: string[]) {
