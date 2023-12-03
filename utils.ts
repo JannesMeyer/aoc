@@ -24,6 +24,10 @@ export function sum(a: number, b: number) {
   return a + b;
 }
 
+export function multiply(a: number, b: number) {
+  return a * b;
+}
+
 export function throwError(error: unknown = new Error()): never {
   if (typeof error === 'string') {
     error = new Error(error);

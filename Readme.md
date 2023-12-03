@@ -2,14 +2,10 @@
 
 ## Run
 
-```sh
-deno test --allow-read
-```
-
-## Run in a specific directory and watch for changes
+Go to the directory you want to test and run:
 
 ```sh
-deno test --allow-read --watch .
+bun test --watch
 ```
 
 ## Format
