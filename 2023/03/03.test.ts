@@ -32,7 +32,7 @@ function sumGearRatios(input: string[]) {
 }
 
 function isAdjacent(a: Match, b: Match) {
-  return a.line - 1 <= b.line && a.line + 1 >= b.line && (a.start <= b.end) && (a.end >= b.start);
+  return a.line - 1 <= b.line && a.line + 1 >= b.line && a.start <= b.end && a.end >= b.start;
 }
 
 function findAll(lines: string[], regex: RegExp): Match[] {
