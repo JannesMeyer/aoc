@@ -56,8 +56,8 @@ export function single<T>(array: readonly T[]): T {
   return array[0];
 }
 
-export function parseInts(str: string): number[] {
-  return str.match(/\d+/g).map(asInteger);
+export function parseInts(str: string | undefined): number[] {
+  return str?.match(/\d+/g)?.map(asInteger) ?? [];
 }
 
 export function isDefined<T>(value: T): value is NonNullable<T> {
@@ -82,12 +82,6 @@ export function toRecord<T, K extends string | number | symbol, V>(
     result[k] = value(item, i);
   }
   return result;
-}
-
-export function assert(condition: unknown, message?: string) {
-  if (!condition) {
-    throw new Error(message ?? 'Assertion failed');
-  }
 }
 
 /** Like Python's range() generator */

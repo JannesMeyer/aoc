@@ -1,5 +1,5 @@
 import { expect, test } from 'bun:test';
-import { multiply, readLines, sum } from '../../utils';
+import { multiply, readLines, sum, throwError } from '../../utils';
 
 type Match = { text: string; start: number; end: number; line: number };
 
@@ -37,6 +37,6 @@ function isAdjacent(a: Match, b: Match) {
 
 function findAll(lines: string[], regex: RegExp): Match[] {
   return lines.flatMap((line, i) =>
-    Array.from(line.matchAll(regex), ({ [0]: text, index: start }) => ({ text, start, end: start + text.length, line: i }))
+    Array.from(line.matchAll(regex), ({ [0]: text, index: start = throwError() }) => ({ text, start, end: start + text.length, line: i }))
   );
 }

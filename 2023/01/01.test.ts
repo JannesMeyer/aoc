@@ -16,14 +16,14 @@ test('2023 1.2', () => {
 });
 
 function getValue(s: string) {
-  const first = /\d/.exec(s)[0];
-  const last = /.*(\d)/.exec(s)[1];
+  const first = /\d/.exec(s)![0];
+  const last = /.*(\d)/.exec(s)![1];
   return Number(first + last);
 }
 
 function getFixedValue(s: string) {
-  const first = /one|two|three|four|five|six|seven|eight|nine|\d/.exec(s)[0];
-  const last = /.*(one|two|three|four|five|six|seven|eight|nine|\d)/.exec(s)[1];
+  const first = /one|two|three|four|five|six|seven|eight|nine|\d/.exec(s)![0];
+  const last = /.*(one|two|three|four|five|six|seven|eight|nine|\d)/.exec(s)![1];
   return Number(fix(first) + fix(last));
 }
 
