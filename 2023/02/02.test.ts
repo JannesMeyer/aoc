@@ -6,12 +6,12 @@ type Set = { red?: number; green?: number; blue?: number };
 const ex1 = await readLines('ex1.txt', import.meta);
 const input = await readLines('input.txt', import.meta);
 
-test('2023 2.1', () => {
+test('2.1', () => {
   expect(ex1.map((s, i) => isPossible(s) ? i + 1 : 0).reduce(sum)).toBe(8);
   expect(input.map((s, i) => isPossible(s) ? i + 1 : 0).reduce(sum)).toBe(2085);
 });
 
-test('2023 2.1', () => {
+test('2.1', () => {
   expect(ex1.map(minPossiblePower).reduce(sum)).toBe(2286);
   expect(input.map(minPossiblePower).reduce(sum)).toBe(79315);
 });

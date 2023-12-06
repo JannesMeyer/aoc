@@ -6,12 +6,12 @@ type Card = { id: number; wins: number };
 const ex1 = await readLines('ex1.txt', import.meta).then((l) => l.map(parseCard));
 const input = await readLines('input.txt', import.meta).then((l) => l.map(parseCard));
 
-test('2023 4.1', () => {
+test('4.1', () => {
   expect(ex1.map(getPoints).reduce(sum)).toBe(13);
   expect(input.map(getPoints).reduce(sum)).toBe(28750);
 });
 
-test('2023 4.2', () => {
+test('4.2', () => {
   expect(countCopies(ex1)).toBe(30);
   expect(countCopies(input)).toBe(10212704);
 });

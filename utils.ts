@@ -1,8 +1,10 @@
+import { readFile } from 'node:fs/promises';
+
 export const lineBreak = /\r?\n/;
 export const doubleLineBreak = /\r?\n\r?\n/;
 
 export function read(path: string, meta: ImportMeta) {
-  return Bun.file(new URL(path, meta.url)).text();
+  return readFile(new URL(path, meta.url), 'utf8');
 }
 
 export async function readLines(path: string, meta: ImportMeta) {
@@ -66,22 +68,6 @@ export function isDefined<T>(value: T): value is NonNullable<T> {
 
 export function isNotEmpty(str: string | undefined | null): str is string {
   return str != null && str.trim() !== '';
-}
-
-export function toRecord<T, K extends string | number | symbol, V>(
-  array: readonly T[],
-  key: (item: T, index: number) => K,
-  value: (item: T, index: number) => V,
-) {
-  const result = {} as Record<K, V>;
-  for (const [i, item] of array.entries()) {
-    const k = key(item, i);
-    if (Object.hasOwn(result, k)) {
-      throw new Error('Duplicate key: ' + String(k));
-    }
-    result[k] = value(item, i);
-  }
-  return result;
 }
 
 /** Like Python's range() generator */

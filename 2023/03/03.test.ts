@@ -6,12 +6,12 @@ type Match = { text: string; start: number; end: number; line: number };
 const ex1 = await readLines('ex1.txt', import.meta);
 const input = await readLines('input.txt', import.meta);
 
-test('2023 3.1', () => {
+test('3.1', () => {
   expect(sumParts(ex1)).toBe(4361);
   expect(sumParts(input)).toBe(556057);
 });
 
-test('2023 3.2', () => {
+test('3.2', () => {
   expect(sumGearRatios(ex1)).toBe(467835);
   expect(sumGearRatios(input)).toBe(82824352);
 });

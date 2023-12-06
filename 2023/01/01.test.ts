@@ -5,12 +5,12 @@ const input = await readLines('input.txt', import.meta);
 const ex1 = await readLines('ex1.txt', import.meta);
 const ex2 = await readLines('ex2.txt', import.meta);
 
-test('2023 1.1', () => {
+test('1.1', () => {
   expect(ex1.map(getValue).reduce(sum)).toBe(142);
   expect(input.map(getValue).reduce(sum)).toBe(52974);
 });
 
-test('2023 1.2', () => {
+test('1.2', () => {
   expect(ex2.map(getFixedValue).reduce(sum)).toBe(281);
   expect(input.map(getFixedValue).reduce(sum)).toBe(53340);
 });
