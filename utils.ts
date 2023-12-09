@@ -11,17 +11,6 @@ export async function readLines(path: string, meta: ImportMeta) {
   return (await read(path, meta)).split(lineBreak);
 }
 
-export function asInteger(a: string | number) {
-  if (typeof a === 'number') {
-    return a;
-  }
-  const n = Number.parseInt(a, 10);
-  if (Number.isNaN(n)) {
-    throw new Error(`NaN: ${a}`);
-  }
-  return n;
-}
-
 export function sum(a: number, b: number) {
   return a + b;
 }
@@ -59,7 +48,7 @@ export function single<T>(array: readonly T[]): T {
 }
 
 export function parseInts(str: string | undefined): number[] {
-  return str?.match(/\d+/g)?.map(asInteger) ?? [];
+  return str?.match(/-?\d+/g)?.map((x) => Number.parseInt(x, 10)) ?? [];
 }
 
 export function isDefined<T>(value: T): value is NonNullable<T> {

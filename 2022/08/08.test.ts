@@ -1,10 +1,10 @@
-import { asInteger, readLines, throwError } from '../../utils';
+import { readLines } from '../../utils';
 import { expect, test } from 'bun:test';
 
 type Trees = number[][];
 
 const input = await readLines('input.txt', import.meta);
-const load = (input: string[]): Trees => input.map((str) => Array.from(str, asInteger));
+const load = (input: string[]): Trees => input.map((str) => Array.from(str, Number));
 
 test('8.1', () => {
   expect(countVisibleTrees(load(['30373', '25512', '65332', '33549', '35390']))).toEqual(21);

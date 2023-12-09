@@ -1,10 +1,10 @@
 import { expect, test } from 'bun:test';
-import { asInteger, readLines } from '../../utils';
+import { readLines } from '../../utils';
 
 type Range = [number, number];
 
 const lines = await readLines('input.txt', import.meta);
-const ranges = lines.map((line) => line.split(',').map((x) => x.split('-').map(asInteger)) as [Range, Range]);
+const ranges = lines.map((line) => line.split(',').map((x) => x.split('-').map(Number)) as [Range, Range]);
 
 test('4.1', () => {
   expect(ranges.filter(([a, b]) => isSubset(a, b) || isSubset(b, a)).length).toEqual(433);
