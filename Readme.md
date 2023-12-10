@@ -12,5 +12,5 @@ bun vitest
 ## Format
 
 ```sh
-deno fmt
+bun fmt
 ```

@@ -1,5 +1,5 @@
-import { readLines } from '../../utils';
 import { expect, test } from 'bun:test';
+import { readLines } from '../../utils';
 
 type Trees = number[][];
 
@@ -51,10 +51,10 @@ function getMaxScenicScore(map: Trees): number {
 }
 
 function getScenicScore(trees: Trees, x: number, y: number) {
-  return getViewDistance(trees, x, y, 0, -1) *
-    getViewDistance(trees, x, y, -1, 0) *
-    getViewDistance(trees, x, y, 0, 1) *
-    getViewDistance(trees, x, y, 1, 0);
+  return getViewDistance(trees, x, y, 0, -1)
+    * getViewDistance(trees, x, y, -1, 0)
+    * getViewDistance(trees, x, y, 0, 1)
+    * getViewDistance(trees, x, y, 1, 0);
 }
 
 function getViewDistance(map: Trees, x: number, y: number, dx: number, dy: number): number {
