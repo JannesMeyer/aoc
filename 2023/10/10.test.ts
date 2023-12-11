@@ -11,7 +11,7 @@ test('10.1', () => {
   expect(findLoop(loadMap(input)).length / 2).toBe(6846);
 });
 
-test.only('10.2', () => {
+test('10.2', () => {
   const loop = findLoop(loadMap(input));
   const xs = loop.map(n => n.x);
   const ys = loop.map(n => n.y);
