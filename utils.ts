@@ -55,10 +55,6 @@ export function isDefined<T>(value: T): value is NonNullable<T> {
   return value != null;
 }
 
-export function isNotEmpty(str: string | undefined | null): str is string {
-  return str != null && str.trim() !== '';
-}
-
 /** Like Python's range() generator */
 export function* range(start: number, stop: number, step = stop < start ? -1 : 1) {
   while ((step < 0 && stop < start) || (step > 0 && stop > start)) {

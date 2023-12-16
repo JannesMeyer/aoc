@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "up": "bun update && dprint config update",
-    "lint": "oxlint --deny-warnings && tsc && dprint check"
+    "lint": "dprint check && oxlint --deny-warnings && tsc"
   },
   "devDependencies": {
     "bun-types": "*",
