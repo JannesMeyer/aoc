@@ -16,7 +16,7 @@ function part2(input: string) {
 
   for (const mapsBlock of groups) {
     const images: Range[] = [];
-    bla: while (ranges.length) {
+    while (ranges.length) {
       const [x, y] = ranges.pop()!;
       for (const [a, b, delta] of mapsBlock.split(lineBreak).slice(1).map(parseInts)) {
         const rEndpoint = b + delta - 1;

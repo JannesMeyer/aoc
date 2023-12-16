@@ -36,6 +36,7 @@ function countCopiesFn(cards: Card[], start = 0, count = cards.length): number {
 function countCopiesQueue(cards: Card[]): number {
   const queue = cards.slice();
   let sum = 0;
+  // eslint-disable-next-line no-cond-assign
   for (let card: Card | undefined; card = queue.pop(); ++sum) {
     for (let i = 0; i < card.wins; ++i) {
       queue.push(cards[card.id + i]);

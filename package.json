@@ -5,13 +5,13 @@
   "type": "module",
   "scripts": {
     "up": "bun update && dprint config update",
-    "fmt": "dprint fmt",
-    "lint": "tsc && dprint check"
+    "lint": "oxlint --deny-warnings && tsc && dprint check"
   },
   "devDependencies": {
-    "bun-types": "",
-    "dprint": "",
-    "typescript": "",
-    "vitest": ""
+    "bun-types": "*",
+    "dprint": "*",
+    "oxlint": "*",
+    "typescript": "*",
+    "vitest": "*"
   }
 }

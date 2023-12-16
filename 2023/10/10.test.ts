@@ -52,6 +52,7 @@ function isInsidePolygon(polygon: Node[], point: Node) {
 function findLoopDFS(start: Node) {
   const stack = [[start]];
   let path: Node[] | undefined;
+  // eslint-disable-next-line no-cond-assign
   while (path = stack.pop()) {
     for (const getNode of path.at(-1)!.nodes) {
       const node = getNode();
